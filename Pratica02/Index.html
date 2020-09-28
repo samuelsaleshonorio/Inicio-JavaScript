@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loja de Informática JF</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css"> <!-- Defindo a referencia de onde o html ira pegar o estilo -->
+	<script>
+		var Numcompras=0;
+		var produtos = [];
+		produtos[1] = {nome:"Computador", valor:'1999.99'};
+		produtos[2] = {nome:"Impressora", valor:'499.99'};
+		produtos[3] = {nome:"Mouse", valor:'89.99'};
+		produtos[4] = {nome:"Monitor", valor:'499.99'};
+
+		function MostraPreco(){ /*Funcao respondavel para buscar o preco do produto selecionado*/
+			var lista = document.getElementById('produtos.nome').value;
+			if (lista != 'Selecione') {
+				document.getElementById('quantidade').disabled = false;
+				for (var i = 1; i < 5; i++){
+					if (lista == produtos[i].nome) {
+						document.getElementById("precoUnitario").innerHTML = produtos[i].valor;
+					}
+				}
+			}
+			else {
+				document.getElementById('quantidade').disabled = true;
+				document.getElementById("precoUnitario").innerHTML ='';
+				document.getElementById("precoTotal").innerHTML ='';
+			}
+		}
+		function vtotal() { /*Calcula o valor total em relacão a quantidade de produtos selecionados*/
+			var qtd = parseInt(document.getElementById('quantidade').value);
+			var precou = document.getElementById('produtos.nome').value;
+			var ValorT;
+			if (precou != 'Selecione') {
+				for (var i = 1; i < 5; i++){
+					if (precou == produtos[i].nome) {
+						if (qtd==1){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+						if (qtd==2){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}	
+						if (qtd==3){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+						if (qtd==4){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+						if (qtd==5){
+							ValorT=produtos[i].valor*qtd;
+							document.getElementById("precoTotal").innerHTML = parseFloat(ValorT.toFixed(2));
+						}
+					}
+				}
+			}
+		}
+		function Resetar() /*atualiza a pagina, fazendo que tudo volte para o inicio sem nenhum valor*/
+		{
+			window.location.reload();
+		}
+		function CriarTabela() { /*Responsavel por criar a tabela quando clicar em adicionar ao carrinho*/
+			var precou = document.getElementById('produtos.nome').value;
+			if (precou == 'Selecione')
+			{
+				alert("Selecione um produto!")
+			}
+			else{
+				var cabecalho = document.getElementById("cabecalho");
+				var corpo = document.getElementById("corpo")
+				if (Numcompras==0){
+					Numcompras=1;
+					var row = cabecalho.insertRow();    
+					var item = row.insertCell();   
+					var desc = row.insertCell();  
+					var qtde = row.insertCell();   
+					var preu = row.insertCell(); 
+					var pret = row.insertCell(); 
+
+					item.innerHTML = "Item";  
+					desc.innerHTML = "Descrição";
+					qtde.innerHTML = "Qtde";  
+					preu.innerHTML = "Preço Unitário";
+					pret.innerHTML = "Preço Total"; 
+
+					var row2 = corpo.insertRow();
+					var item = row2.insertCell();
+					var desc = row2.insertCell();  
+					var qtde = row2.insertCell();   
+					var preu = row2.insertCell(); 
+					var pret = row2.insertCell(); 
+
+					var nomeP = document.getElementById('produtos.nome').value;
+					var precoU = document.getElementById('precoUnitario').innerHTML;
+					var precoT = document.getElementById('precoTotal').innerHTML;
+					var qtd = parseInt(document.getElementById('quantidade').value);
+
+					item.innerHTML = Numcompras;
+					desc.innerHTML = nomeP;
+					qtde.innerHTML = qtd;
+					preu.innerHTML = precoU;
+					pret.innerHTML = precoT;
+
+					Numcompras++;
+				}
+				else {
+					var row = corpo.insertRow();
+					var item = row.insertCell();
+					var desc = row.insertCell();  
+					var qtde = row.insertCell();   
+					var preu = row.insertCell(); 
+					var pret = row.insertCell(); 
+
+					var lista = document.getElementById('produtos.nome').value;
+					var precoU = document.getElementById('precoUnitario').innerHTML;
+					var precoT = document.getElementById('precoTotal').innerHTML;
+					var qtd = parseInt(document.getElementById('quantidade').value);
+
+					item.innerHTML = Numcompras;
+					desc.innerHTML = lista;
+					qtde.innerHTML = qtd;
+					preu.innerHTML = precoU;
+					pret.innerHTML = precoT;
+					Numcompras++;
+				}
+			}
+			
+		}
+
+	</script>
+</head>
+<body>
+	<div>
+		<h1>Bem-vindo à Loja Virtual da JF Infomática</h1>
+		<h2>Selecione o produto e quantidade desejados para adicionar ao seu carrinho</h2>
+		<div class="div1"> <!-- referencia para estilo do css -->
+			<p class="paragrafo"> <!-- referencia para estilo do css -->
+				Selecione o produto
+				<select id="produtos.nome" onchange="MostraPreco();vtotal()"> <!-- chamada da funcao -->
+					<option>Selecione</option>
+					<option>Computador</option>
+					<option>Impressora</option>
+					<option>Mouse</option>
+					<option>Monitor</option>
+
+				</select>
+			</p>
+			<p class="paragrafo"> <!-- referencia para estilo do css -->
+				Selecione a quantidade
+				<select id="quantidade" disabled="true" onchange="vtotal()"> <!-- chamada da funcao -->
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+
+			</p>
+			<p class="paragrafo , ex1"><!-- referencia para estilo do css -->
+				Preço unitário: <p class="ex1"  id="precoUnitario"></p>
+			</p>
+			<p class="paragrafo , ex1"><!-- referencia para estilo do css -->
+				Preço total: <p class="ex1"  id="precoTotal"></p>	
+			</p>
+			<p><button id="btn_adicionar" onclick="CriarTabela()">Adicionar ao carrinho</button></p> <!-- chamada da funcao -->
+		</div>
+		<h2>Itens Comprados:</h2>
+
+		 
+			<table id="tabela" style="border-collapse: collapse; border-style: solid; border-color: black;" border="1px">
+				<thead id="cabecalho" ></thead>
+				<tbody id="corpo" ></tbody>
+			</table>
+		
+
+
+
+	
+
+		<p><button name="btn_reseta" onclick="Resetar()">Esvaziar carrinho</button></p> <!-- chamada da funcao -->
+		<!-- <h2>Valor total do pedido:</h2> -->
+	</div>
+
+</body>
+</html>

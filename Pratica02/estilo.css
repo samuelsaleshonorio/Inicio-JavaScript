@@ -1,0 +1,47 @@
+p.ex1 {
+	display: inline;
+}
+*{
+	font-family: TimesNewRoman;
+}
+
+h1,h2{
+	text-align: justify;
+	color: white;
+}
+
+body{
+	background-color: rgb(32,145,126);
+}
+
+.div1{
+	background-color: rgb(222,247,251);
+	width: 600px;
+	border: 2px solid rgb(190,193,185);
+	padding: 8px;
+}
+
+.paragrafo{
+	color: rgb(53,56,213);
+	font-weight: bold;
+	font-size: 19px;
+	padding: 7px;
+	padding-right: 8px;
+}
+
+#cabecalho{
+
+	background-color: rgb(69,94,91);
+	color: white;
+	border-color: black;
+	font-weight: bold;
+} 
+#corpo{
+	background-color: rgb(255,254,255);
+	color: rgb(101,126,146);
+	border-color: black;
+}
+td,th{
+	border-color: gray;
+	padding: 12px;
+}
