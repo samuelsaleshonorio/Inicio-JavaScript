@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Códigos prontos...</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css.css"> <!-- Defindo a referencia de onde o html ira pegar o estilo -->
+	<script type="text/javascript">
+		function startTime()
+		{
+			var today=new Date();
+			var h=today.getHours();
+			var m=today.getMinutes();
+			var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+t=setTimeout('startTime()',500);
+
+}
+
+function checkTime(i)
+{
+	if (i<10)
+	{
+		i="0" + i;
+	}
+	return i;
+}
+</script>
+</head>
+
+<body>
+	<h1>Lista de códigos prontos para facilitar o uso de JavaScript</h1>
+
+	<h2>
+		1º Hora <br><br> A Hora em tempo real é:
+		<div id="txt">
+			<script type="text/javascript">document.write(startTime())</script>
+		</div>
+	</h2>
+	<h2>
+		2º Data <br><br> A Hora e Data  da entrada no site:
+		<div id="txt">
+			<script type="text/javascript">document.write(Date());</script>
+		</div>
+	</h2>
+
+
+</body>
+</html>
